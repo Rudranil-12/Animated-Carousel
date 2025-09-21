@@ -71,3 +71,52 @@ leftArrow.addEventListener("click", () => {
 
 // Initial load
 updateCarousel(currentIndex);
+
+
+// CART FUNCTION
+let cart = [];
+let cartCount = 0;
+
+const cartCountSpan = document.getElementById("cart-count");
+const addCartBtn = document.querySelector(".add-cart-btn");
+const cartItemsList = document.getElementById("cart-items");
+const emptyMsg = document.getElementById("empty-msg");
+const cartDropdown = document.getElementById("cart-dropdown");
+const cartBtn = document.getElementById("cart-btn");
+const cartTotal = document.getElementById("cart-total");
+
+function updateCartDropdown() {
+    cartItemsList.innerHTML = "";
+    if (cart.length === 0) {
+        emptyMsg.style.display = "block";
+        cartTotal.textContent = "Total: $0.00";
+        return;
+    }
+    emptyMsg.style.display = "none";
+    let total = 0;
+    cart.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${item.title}</span><span>${item.price}</span>`;
+        cartItemsList.appendChild(li);
+        total += parseFloat(item.price.replace("$",""));
+    });
+    cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+}
+
+addCartBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const productTitle = document.querySelector(".text h1").innerText;
+    const productPrice = document.querySelector(".price").innerText;
+    cart.push({ title: productTitle, price: productPrice });
+    cartCount++;
+    cartCountSpan.textContent = cartCount;
+    updateCartDropdown();
+    addCartBtn.textContent = "Added!";
+    setTimeout(() => addCartBtn.textContent = "Add to Cart", 1000);
+});
+
+cartBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    cartDropdown.style.display = cartDropdown.style.display === "block" ? "none" : "block";
+    profileDropdown.style.display = "none";
+});
