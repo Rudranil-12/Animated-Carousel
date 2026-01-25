@@ -3,11 +3,13 @@
 An interactive and visually appealing animated product carousel website built with HTML, CSS, and JavaScript.
 This project showcases a modern e-commerce product page featuring:
 
-✅ Smooth product carousel animation
-✅ Clean and minimal UI design
-✅ Interactive navigation
-✅ Add-to-cart button functionality
-✅ Responsive layout
+- ✅ Smooth product carousel animation
+- ✅ Clean and minimal UI design
+- ✅ Interactive navigation
+- ✅ Add-to-cart button functionality
+- ✅ Responsive layout
+
+---
 
 🎨 Current example: Creamy Coffee - Primo (with floating coffee beans and smooth transitions).
 
